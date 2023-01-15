@@ -1,15 +1,22 @@
 import './App.css';
 import Searchbar from './components/searchBar';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 function App() {
 
   const [ingridients, setIngridients] = useState([])
   
   const search = (str) => {
-    setIngridients(str.split(','));
-    console.log(ingridients);
+    setIngridients( str.split(',').map((val)=>(val.trim())));
   }
+
+  console.log(ingridients);
+  useEffect(() => {
+    
+    return () => {
+      
+    };
+  }, [ingridients]);
 
   return (
     <div className="App">
