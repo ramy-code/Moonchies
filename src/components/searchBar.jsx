@@ -1,12 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 const Searchbar = ({ search }) => {
-    const [searchText,setSearchText] = useState('')
+    const [searchText, setSearchText] = useState('')
+    useEffect(() => {
+        setSearchText(searchText)
+    }, [searchText]);
     return (
         <div className="searchBar">
             <input type="text" name="searchBar" value={searchText} onChange={(e) => {setSearchText(e.target.value)}} />
-            <button onClick={() => { search(searchText) }}> 🔎</button>
+            <p className='searchBtn' onClick={() => { search(searchText) }}> 🔎</p>
             <p>{searchText}</p>
         </div>
     );
