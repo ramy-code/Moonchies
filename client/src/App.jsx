@@ -5,6 +5,8 @@ import axios from 'axios'
 function App() {
   const [ingridients, setIngridients] = useState([])
   const [recipe, setRecipe] = useState({});
+
+  
   const search = (obj) => {
     setIngridients(obj);
   }
