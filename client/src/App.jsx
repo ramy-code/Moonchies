@@ -5,20 +5,23 @@ import axios from 'axios'
 function App() {
   const [ingridients, setIngridients] = useState([])
   const [recipe, setRecipe] = useState({});
-
-  
-  const search = (obj) => {
-    setIngridients(obj);
+ 
+  const search = (obj)=> {
+    setIngridients(obj)
   }
 
-  const getRecipes = async (ingridientsArray) => {
-    axios('http://localhost:5000/api')
-    .then(res => setRecipe(res))
+  const getRecipes = async (searchObj) => {
+    axios.post('http://localhost:5000/api',searchObj)
+    .then(res => setRecipe(res.data))
     .catch(err=> console.error(err))
   }
 
-
-  console.log(ingridients);
+  useEffect(() => {
+    if (ingridients.searchText) { 
+      getRecipes(ingridients)
+    }
+  }, [ingridients]);
+  console.log(recipe);
 
   return (
     <div className="App">

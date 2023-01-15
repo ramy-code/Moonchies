@@ -18,11 +18,8 @@ const Searchbar = ({ search }) => {
     
     const handleText = (e) => {
         let str = e.target.value;
-        if(searchType === "ingridients") 
-        {
-            str = str.split(',')
-        }
         setSearchText(str)
+
     }
     const handleForm = (e) => {
         let searchTxt = searchText
@@ -32,10 +29,7 @@ const Searchbar = ({ search }) => {
         } else {
             setError(false);
         }
-        if(searchType === "ingridients") 
-        {
-           searchTxt =  searchTxt.map((val) => (val.trim()))
-        }
+
         SetsearchData({
             searchType: searchType,
             searchText: searchTxt
