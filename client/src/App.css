@@ -39,3 +39,18 @@ body{
 .errorText{
   color: red;
 }
+
+.recipeList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.recipeCard{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
+  margin: 30px;
+  background-color: red;
+}
