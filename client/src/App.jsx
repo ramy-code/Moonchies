@@ -2,9 +2,10 @@ import './App.css';
 import Searchbar from './components/searchBar';
 import { useState,useEffect } from 'react';
 import axios from 'axios'
+import Recipecard from './components/recipeCard';
 function App() {
   const [ingridients, setIngridients] = useState([])
-  const [recipe, setRecipe] = useState({});
+  const [recipes, setRecipes] = useState([]);
  
   const search = (obj)=> {
     setIngridients(obj)
@@ -12,7 +13,10 @@ function App() {
 
   const getRecipes = async (searchObj) => {
     axios.post('http://localhost:5000/api',searchObj)
-    .then(res => setRecipe(res.data))
+      .then((res) => {
+        let arr = []
+        return setRecipes({ ...res.data })
+    })
     .catch(err=> console.error(err))
   }
 
@@ -21,11 +25,13 @@ function App() {
       getRecipes(ingridients)
     }
   }, [ingridients]);
-  console.log(recipe);
+  
+  console.log(recipes);
 
   return (
     <div className="App">
       <Searchbar search={search} />
+      {/* {recipes.map(recipe => <Recipecard recipe={recipe}/>)} */}
     </div>
   );
 }

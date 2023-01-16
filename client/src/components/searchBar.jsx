@@ -5,7 +5,7 @@ const Searchbar = ({ search }) => {
 
 
     const [searchText, setSearchText] = useState('')
-    const [searchType, setSearchType] = useState('recipe')
+    const [searchType, setSearchType] = useState('ingridients')
     const [error, setError] = useState(false);
     const [searchData, SetsearchData] = useState({
         searchType: searchType,
@@ -22,7 +22,6 @@ const Searchbar = ({ search }) => {
 
     }
     const handleForm = (e) => {
-        let searchTxt = searchText
         if (!searchText || !searchType) {
             setError(true)
             return;
@@ -32,7 +31,7 @@ const Searchbar = ({ search }) => {
 
         SetsearchData({
             searchType: searchType,
-            searchText: searchTxt
+            searchText: searchText
         })
     }
 
@@ -52,12 +51,12 @@ const Searchbar = ({ search }) => {
             <div className="radios">
 
                 <div className="radioGroup">
-                    <input onChange={handleType} type="radio" name="searchType" defaultChecked="true" value="recipe" id="" />
+                    <input onChange={handleType} type="radio" name="searchType"  value="recipe" id="" />
                     <label htmlFor="searchType"> Search by recipe</label>
                 </div>
 
                 <div className="radioGroup">
-                    <input onChange={handleType} type="radio" name="searchType"  value="ingridients"  id="" />
+                    <input onChange={handleType} type="radio" name="searchType"  defaultChecked="true" value="ingridients"  id="" />
                     <label htmlFor="searchType"> Search by ingridient </label>
                 </div>
 

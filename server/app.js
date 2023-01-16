@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import axios from "axios"
 
+
 let jsonParser = bodyParser.json();
 
 const app = express();
@@ -13,23 +14,21 @@ app.use(cors());
 
 
 
-app.post('/api', jsonParser, (req, res) => {
+app.post('/api', jsonParser,async (req, res) => {
     if(!req.body) return
     const request = parseRequestByType(req.body);
     const url = parseRequestAsUrlForApiCall(request);
-    const data =  getRequestToApi(url)
-
+    const data = await getRequestToApi(url)
     console.log(url);
-    res.json({ data })
+    res.json(data)
 })
 
 
 
-const getRequestToApi =  (url) => {
-    let result;
-    axios.get(url)
-        .then((res) => { result = res.body })
-        .catch((err)=>{console.error(err)})
+const getRequestToApi = (url) => {
+    const promise = axios(url)
+    const result = promise.then( (res) =>res.data)
+        .catch((err) => { console.error(err) })
     return result
 }
 
