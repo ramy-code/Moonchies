@@ -15,7 +15,7 @@ function App() {
     axios.post('http://localhost:5000/api',searchObj)
       .then((res) => {
         let arr = []
-        return setRecipes({ ...res.data })
+        return setRecipes(Object.values(res.data))
     })
     .catch(err=> console.error(err))
   }
@@ -26,12 +26,12 @@ function App() {
     }
   }, [ingridients]);
   
-  console.log(recipes);
+  // console.log(Object.values(recipes));
 
   return (
     <div className="App">
       <Searchbar search={search} />
-      {/* {recipes.map(recipe => <Recipecard recipe={recipe}/>)} */}
+      {recipes.map(recipe => <Recipecard key={ recipe.id} recipe={recipe}/>)}
     </div>
   );
 }
