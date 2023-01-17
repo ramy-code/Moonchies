@@ -780,7 +780,7 @@ const getRequestToApi = (url) => {
 const parseRequestAsUrlForApiCall = (request) => {
     let url = "https://api.spoonacular.com/recipes/"
     let searchMethod = "";
-    if (request.searchType == "ingridients")
+    if (request.searchType == "ingredients")
     {
         searchMethod = "findByIngredients?";
         url += searchMethod +"ingredients=";

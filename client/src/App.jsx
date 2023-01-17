@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <Searchbar search={search} />
-      <Recipelist recipes={recipes}/>
+      {recipes ? <Recipelist recipes={recipes}/> : <p>Nothing found 😿</p>} 
     </div>
   );
 }
