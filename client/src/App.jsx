@@ -2,8 +2,8 @@ import './App.css';
 import Searchbar from './components/searchBar';
 import { useState,useEffect } from 'react';
 import axios from 'axios'
-import Recipecard from './components/recipeCard';
 import Recipelist from './components/recipeList';
+import Navbar from './components/navBar';
 function App() {
   const [ingridients, setIngridients] = useState([])
   const [recipes, setRecipes] = useState([]);
@@ -36,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar/>
       <Searchbar search={search} />
       {recipes ? <Recipelist recipes={recipes}/> : <p>Nothing found 😿</p>} 
     </div>

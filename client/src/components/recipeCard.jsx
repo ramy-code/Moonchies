@@ -2,15 +2,14 @@ import React from 'react';
 
 const Recipecard = ({recipe}) => {
     return (
-        <div className="recipeCard">
-            <img src={recipe.image} alt="" />
-            <p>{recipe.title}</p>
-            {recipe.usedIngredientCount && recipe.usedIngredientCount.map((ing) => {
-                return <p key={ing.id}>{ing.name} : {ing.amount} {ing.unit} </p>
-            })}
-            {recipe.missedIngredients && recipe.missedIngredients.map((ing) => {
-                return <p key={ing.id}>{ing.name} : {ing.amount} {ing.unit} </p>
-            })}
+        <div className={"recipeCard "+recipe.id}>
+            <img src={recipe.image} alt=""> 
+            </img>
+                <p className="recipe-title">{recipe.title}</p>
+            <div className="recipe-details">
+                <p className="missing-ingredients">{recipe.missedIngredientCount} ingredients missing</p>
+                <p className="recipe-likes">{recipe.likes} 💓</p>
+            </div>
         </div>
     );
 }

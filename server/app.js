@@ -760,19 +760,30 @@ app.use(cors());
 app.post('/api', jsonParser,async (req, res) => {
     if (!req.body) return
     let data = {}
+    let searchMethod = req.body.searchType
     const request = parseRequestByType(req.body);
     const url = parseRequestAsUrlForApiCall(request);
-    data = await getRequestToApi(url)
+    data = await getRequestToApi(url,searchMethod)
     console.log(url);
     res.json(data)
 })
 
 
 
-const getRequestToApi = (url) => {
+const getRequestToApi = (url, searchMethod) => {
+    console.log(searchMethod);
     const promise = axios(url)
-    const result = promise.then( (res) =>res.data)
-        .catch((err) => { console.error(err) })
+    if (searchMethod == 'ingredients') {
+        const result = promise.then((res) => res.data)
+            .catch((err) => { console.error(err) })
+    } else if (searchMethod == 'recipe') {
+        const result = promise.then((res) => {
+            console.log(res.data);
+            return res.data.results
+        })
+            .catch((err) => { console.error(err) })
+        
+    }
     return result
 }
 
