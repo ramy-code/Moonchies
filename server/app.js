@@ -772,16 +772,15 @@ app.post('/api', jsonParser,async (req, res) => {
 
 const getRequestToApi = (url, searchMethod) => {
     console.log(searchMethod);
+    let result;
     const promise = axios(url)
     if (searchMethod == 'ingredients') {
-        const result = promise.then((res) => res.data)
-            .catch((err) => { console.error(err) })
-    } else if (searchMethod == 'recipe') {
-        const result = promise.then((res) => {
-            console.log(res.data);
-            return res.data.results
-        })
-            .catch((err) => { console.error(err) })
+        result = promise.then((res) => res.data)
+        .catch((err) => { console.error(err) })
+    }
+    if (searchMethod == 'recipe') {
+        result = promise.then((res) => res.data.results)
+        .catch((err) => { console.error(err) })
         
     }
     return result
@@ -816,7 +815,10 @@ const parseRequestByType = (request) => {
     if (request.searchType === "recipe") return request
 
     let newReq = {...request}
-    newReq.searchText = request.searchText.split(',').map(el=>el.trim())
+    newReq.searchText = request.searchText.split(',').map((el) => {
+       return el.trim().replace(' ','%')
+    }
+    )
     return newReq;
 
 }

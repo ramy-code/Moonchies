@@ -4,10 +4,7 @@ const Navbar = () => {
     return (
         <div className="navBar">
             <p className="title">MOONCHIES</p>
-            <div className="navigation">
-                <a href="https://github.com/dablusLyes/Moonchies">GITHUB</a>
-                <a>Contact me</a>
-            </div>
+                <a href="https://github.com/dablusLyes/Moonchies" target="_blank" >GITHUB</a>
         </div>
     );
 }

@@ -21,7 +21,7 @@ body{
   justify-content: space-evenly;
 }
 
-.navigation a{
+.navBar a{
   text-decoration: none;
   color: white;
   display: flex;
@@ -100,7 +100,8 @@ body{
 
 .recipeCard img{
   border-radius: 30px;
-  object-fit:cover;
+  max-width: 400px;
+  object-fit:contain;
 }
 .recipe-title{
   font-size: 2em;
