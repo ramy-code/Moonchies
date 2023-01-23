@@ -11,12 +11,12 @@ const Recipedetail = () => {
     const getSingleRecipe = (id) => {
         axios.get("http://localhost:5000/recipe", {params: {id:id}})
             .then((res) => {
-            console.log(res);
+            setRecipeData([{...res.data}])
         })
     }
 
     useEffect(() => {
-        console.log('dz')
+        console.log(recipeData)
         getSingleRecipe(recipeId)
     }, []);
     return (
