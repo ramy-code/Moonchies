@@ -14,13 +14,14 @@ let jsonParser = bodyParser.json();
 app.use(cors());
 
 app.post("/api", jsonParser, async (req, res) => {
-  let data = await recipeDetailSearch(req);
+  let data = await recipeListSearch(req);
   await res.json(data);
 });
 
 app.get("/recipe", jsonParser, async (req, res) => {
   const recipeId = req.query.id;
-  console.log(recipeId);
+  let data = await recipeDetailSearch(recipeId);
+  await res.json(data.data);
 });
 
 app.listen(PORT, () => console.log("Listening on port: " + PORT));
