@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_KEY } from "./recipeListSearch";
+import { API_KEY } from "./recipeListSearch.js";
 
 const getRequestToApi = async (id) => {
   url = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${API_KEY}`;
@@ -8,8 +8,6 @@ const getRequestToApi = async (id) => {
   });
 };
 
-const recipeDetailSearch = async (id) => {
+export const recipeDetailSearch = async (id) => {
   return await getRequestToApi(id);
 };
-
-export default recipeDetailSearch;
