@@ -7,7 +7,6 @@ const getRequestToApi = async (id) => {
   return axios
     .get(url)
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((err) => {
@@ -16,5 +15,7 @@ const getRequestToApi = async (id) => {
 };
 
 export const recipeDetailSearch = async (id) => {
-  return await getRequestToApi(id);
+  let data = await getRequestToApi(id);
+  console.log(data.data);
+  return data;
 };

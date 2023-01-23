@@ -8,8 +8,8 @@ const Recipedetail = () => {
     const [recipeId, setRecipeId] = useState(params.id);
     const [recipeData, setRecipeData] = useState([]);
 
-    const getSingleRecipe = (id) => {
-        axios.get("http://localhost:5000/recipe", {params: {id:id}})
+    const getSingleRecipe = async (id) => {
+        return await axios.get("http://localhost:5000/recipe", {params: {id:id}})
             .then((res) => {
             setRecipeData([{...res.data}])
         })
@@ -27,3 +27,4 @@ const Recipedetail = () => {
 }
 
 export default Recipedetail;
+ 
