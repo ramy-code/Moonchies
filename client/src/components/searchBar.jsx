@@ -49,16 +49,16 @@ const Searchbar = ({ search }) => {
             </div>
 
             <div className="radios">
+                <div className="radioGroup">
+                    <input onChange={handleType} type="radio" name="searchType"  defaultChecked="true" value="ingredients"  id="" />
+                    <label htmlFor="searchType"> Search by ingredient </label>
+                </div>
 
                 <div className="radioGroup">
                     <input onChange={handleType} type="radio" name="searchType"  value="recipe" id="" />
                     <label htmlFor="searchType"> Search by recipe</label>
                 </div>
 
-                <div className="radioGroup">
-                    <input onChange={handleType} type="radio" name="searchType"  defaultChecked="true" value="ingredients"  id="" />
-                    <label htmlFor="searchType"> Search by ingredient </label>
-                </div>
 
             </div>
             
