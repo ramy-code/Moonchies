@@ -9,13 +9,15 @@ const Recipedetail = () => {
     const [recipeData, setRecipeData] = useState([]);
 
     const getSingleRecipe = async (id) => {
+        console.log('axios call front');
         return await axios.get("http://localhost:5000/recipe", {params: {id:id}})
             .then((res) => {
-            setRecipeData([{...res.data}])
+            setRecipeData({...res.data})
         })
     }
-
+    console.log('TNEKT');
     useEffect(() => {
+        console.log('useEffect lol');
         console.log(recipeData)
         getSingleRecipe(recipeId)
     }, []);

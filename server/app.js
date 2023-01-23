@@ -21,7 +21,7 @@ app.post("/api", jsonParser, async (req, res) => {
 app.get("/recipe", jsonParser, async (req, res) => {
   const recipeId = req.query.id;
   let data = await recipeDetailSearch(recipeId);
-  await res.json(data.data);
+  await res.json(data);
 });
 
 app.listen(PORT, () => console.log("Listening on port: " + PORT));
