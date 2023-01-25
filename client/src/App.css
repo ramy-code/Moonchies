@@ -47,20 +47,27 @@ body{
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .searchField input{
   width: 60%;
   height: 50px;
-  border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
   padding: 0 40px;
   font-size: 1.6em;
 }
 .searchBtn{
-  position: relative;
-  right: 50px;
-  top: -26px;
+  display: flex;
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  align-items: center;
   font-size: 2em;
   cursor: pointer;
+  border: 3px solid rgb(22, 22, 42);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .radios{

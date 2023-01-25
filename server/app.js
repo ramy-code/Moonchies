@@ -14,8 +14,14 @@ let jsonParser = bodyParser.json();
 app.use(cors());
 
 app.post("/api", jsonParser, async (req, res) => {
-  let data = await recipeListSearch(req);
-  await res.json(data);
+  try {
+    let data = await recipeListSearch(req);
+    res.json({
+      data: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.log(`ERROR : ${error}`);
+  }
 });
 
 app.get("/recipe", jsonParser, async (req, res) => {

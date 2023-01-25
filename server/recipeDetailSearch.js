@@ -4,10 +4,9 @@ import { API_KEY } from "./recipeListSearch.js";
 const getRequestToApi = async (id) => {
   let url = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${API_KEY}`;
   console.log(id);
-  return axios
+  return await axios
     .get(url)
     .then((res) => {
-      console.log("apiCalled");
       return res;
     })
     .catch((err) => {
@@ -16,10 +15,7 @@ const getRequestToApi = async (id) => {
 };
 
 export const recipeDetailSearch = async (id) => {
-  // let data = await getRequestToApi(id);
-  let data = {
-    data: "dz",
-  };
-  console.log(data.data);
+  let data = await getRequestToApi(id);
+
   return data;
 };

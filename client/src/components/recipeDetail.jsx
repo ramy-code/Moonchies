@@ -12,18 +12,17 @@ const Recipedetail = () => {
         console.log('axios call front');
         return await axios.get("http://localhost:5000/recipe", {params: {id:id}})
             .then((res) => {
-            setRecipeData({...res.data})
+                setRecipeData({ ...res.data })
+                console.log(res);
         })
     }
-    console.log('TNEKT');
-    useEffect(() => {
-        console.log('useEffect lol');
-        console.log(recipeData)
+    useEffect(() => { 
         getSingleRecipe(recipeId)
+        console.log(recipeData); 
     }, []);
     return (
         <div>
-            <p>{recipeId}</p>
+            <p>{recipeId}  { recipeData.data}</p>
         </div>
     );
 }

@@ -19,7 +19,6 @@ const [recipes, setRecipes] = useState([]);
       .then((res) => {
         let arr = []
         res.data.forEach(data => {
-          console.log(data);
           arr.push(data)
         });
         // console.log(arr);
