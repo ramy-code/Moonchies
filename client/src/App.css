@@ -13,8 +13,6 @@ body{
   font-size: 1.1em;
 }
 
-
-
 .navigation{
   width: 40%;
   display: flex;
@@ -31,8 +29,6 @@ body{
 .navigation a:hover{
   color: aqua;
 }
-
-
 
 /* SEARCHFIELD */
 
@@ -113,12 +109,11 @@ body{
 .recipeCard img{
   border-radius: 30px;
   max-width: 400px;
-  object-fit:contain;
+  object-fit:fill;
 }
 .recipe-title{
   font-size: 2em;
   font-weight: bold;
-
 }
 .recipe-likes{
 }

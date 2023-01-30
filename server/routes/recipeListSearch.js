@@ -1,10 +1,11 @@
 import axios from "axios";
+import { Express } from "express";
 
 import { exampleResult } from "./exampleData.js";
+const API_KEY = "7df17733ac2349e588977900807b4b77";
 
-export const API_KEY = "7df17733ac2349e588977900807b4b77";
-
-export const getRequestToApi = (url, searchMethod) => {
+export const router = express.Router();
+const getRequestToApi = (url, searchMethod) => {
   let result;
   const promise = axios(url);
   if (searchMethod == "ingredients") {
@@ -24,7 +25,7 @@ export const getRequestToApi = (url, searchMethod) => {
   return result;
 };
 
-export const parseRequestAsUrlForApiCall = (request) => {
+const parseRequestAsUrlForApiCall = (request) => {
   let url = "https://api.spoonacular.com/recipes/";
   let searchMethod = "";
   if (request.searchType == "ingredients") {
@@ -46,7 +47,7 @@ export const parseRequestAsUrlForApiCall = (request) => {
   return url;
 };
 
-export const parseRequestByType = (request) => {
+const parseRequestByType = (request) => {
   if (request.searchType === "recipe") return request;
 
   let newReq = { ...request };
@@ -56,10 +57,19 @@ export const parseRequestByType = (request) => {
   return newReq;
 };
 
-export const recipeListSearch = async (req) => {
+const recipeListSearch = async (req) => {
   if (!req.body) return;
   let searchMethod = req.body.searchType;
   const request = parseRequestByType(req.body);
   const url = parseRequestAsUrlForApiCall(request);
   return await getRequestToApi(url, searchMethod);
 };
+
+router.post("/api", jsonParser, async (req, res) => {
+  try {
+    let data = await recipeListSearch(req);
+    res.json({ data });
+  } catch (error) {
+    console.log(`ERROR : ${error}`);
+  }
+});
