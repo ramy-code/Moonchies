@@ -1,8 +1,11 @@
 import axios from "axios";
-import { Express } from "express";
+import express from "express";
+import bodyParser from "body-parser";
+import { exampleResult } from "../exampleData.js";
 
-import { exampleResult } from "./exampleData.js";
-const API_KEY = "7df17733ac2349e588977900807b4b77";
+let jsonParser = bodyParser.json();
+
+export const API_KEY = "7df17733ac2349e588977900807b4b77";
 
 export const router = express.Router();
 const getRequestToApi = (url, searchMethod) => {

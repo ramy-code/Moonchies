@@ -1,8 +1,22 @@
 import axios from "axios";
 import { API_KEY } from "./recipeListSearch.js";
-import { Express } from "express";
+import express from "express";
+import bodyParser from "body-parser";
 
-const router = express.Router();
+let jsonParser = bodyParser.json();
+
+export const router = express.Router();
+
+router.get("/recipe", jsonParser, async (req, res) => {
+  try {
+    const recipeId = req.query.id;
+    let data = await recipeDetailSearch(recipeId);
+    console.log(data.data);
+    res.json(data.data);
+  } catch (err) {
+    console.error(err);
+  }
+});
 
 const getRequestToApi = async (id) => {
   let url = `https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${API_KEY}`;
@@ -18,13 +32,10 @@ const getRequestToApi = async (id) => {
 };
 
 export const recipeDetailSearch = async (id) => {
-  let data = await getRequestToApi(id);
-
-  return data;
+  try {
+    let data = await getRequestToApi(id);
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
 };
-
-router.get("/recipe", jsonParser, async (req, res) => {
-  const recipeId = req.query.id;
-  let data = await recipeDetailSearch(recipeId);
-  await res.json(data);
-});
