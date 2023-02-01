@@ -14,6 +14,24 @@ const Searchbar = ({ search }) => {
     setSearchType(e.target.value);
   };
 
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      if (!searchText || !searchType) {
+        setError(true);
+        return;
+      } else {
+        setError(false);
+      }
+
+      SetsearchData({
+        searchType: searchType,
+        searchText: searchText,
+      });
+    }
+  }
+
+
   const handleText = (e) => {
     let str = e.target.value;
     setSearchText(str);
@@ -47,8 +65,9 @@ const Searchbar = ({ search }) => {
           id="searchText"
           value={searchText}
           onChange={handleText}
+          onKeyDown={handleKeyDown}
         />
-        <p className="searchBtn" onClick={handleForm}>
+        <p className="searchBtn"  onClick={handleForm}>
           🔎
         </p>
       </div>

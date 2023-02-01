@@ -25,17 +25,19 @@ const Recipedetail = () => {
     console.log(recipeData);
   }, []);
   return (
-    <div>
-      <img src={recipeImage} alt="" />
-      <h1>{recipeName}</h1>
-      {
-        recipeData.map((el,index) => (
-          <div key={index}>
-            <img src={'https://spoonacular.com/cdn/ingredients_100x100/'+ el.image} alt="" />
-            <p>{`${el.amount.metric.value} ${el.amount.metric.unit}   ${el.name}`}</p>
-          </div>
-        ))
-      }
+    <div className="detailPage">
+      <div className="recipeInfo">
+        <img className="recipeImg" src={recipeImage} alt="" />
+        <h1 className="recipeTitle" >{recipeName}</h1>
+      </div>
+      <div className="ingredientBody">
+        {recipeData.map((el,index) => (
+          <div className="ingredientInfo" key={index}>
+              <img className="ingredientImg" src={'https://spoonacular.com/cdn/ingredients_100x100/'+ el.image} alt="" />
+              <p className="ingredientTitle" >{`${el.amount.metric.value} ${el.amount.metric.unit}   ${el.name}`}</p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

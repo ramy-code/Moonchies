@@ -115,5 +115,37 @@ body{
   font-size: 2em;
   font-weight: bold;
 }
-.recipe-likes{
+
+
+
+/* DETAIL PAGE */
+
+.recipeInfo{
+  display: flex;
+  padding: 0px 100px;
+  margin: 100px 0px;
+}
+.recipeImg{
+  border-radius: 30px;
+  margin-right :  40px;
+}
+
+.ingredientBody{
+  display: flex;
+  justify-content: center;
+}
+.ingredientInfo{
+  display: flex;
+  margin: 50px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ingredientImg{
+  width: 100px;
+  border-radius: 15px;
+}
+
+.ingredientTitle{
+  text-align: center;
 }
