@@ -123,7 +123,7 @@ body{
 .recipeInfo{
   display: flex;
   padding: 0px 100px;
-  margin: 100px 0px;
+  margin: 20px 0 100px 0px;
 }
 .recipeImg{
   border-radius: 30px;
@@ -132,11 +132,13 @@ body{
 
 .ingredientBody{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .ingredientInfo{
   display: flex;
-  margin: 50px;
+  background-color: red;
+  /* margin: 50px; */
   flex-direction: column;
   justify-content: space-between;
 }
