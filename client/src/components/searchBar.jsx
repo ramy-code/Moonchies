@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import recipeImage from '../assets/breakfast-monochromatic.svg'
+import ingredientImage from '../assets/shopping-cart-monochromatic.svg'
 const Searchbar = ({ search }) => {
   const [searchText, setSearchText] = useState("");
   const [searchType, setSearchType] = useState("ingredients");
@@ -54,12 +55,13 @@ const Searchbar = ({ search }) => {
     if (searchText && searchType) {
       search(searchData);
     }
-  }, [searchData]);
+  }, [searchData.searchText]);
   return (
-    <div className="searchBar">
-      <div className="searchField">
-        <input
+    <div className="shadow-lg pb-16">
+      <div className="  flex justify-center w-100 ">
+        < input
           placeholder={`Search your ${searchType}...`}
+          className="w-1/3 h-12 border-2 border-cta rounded-l-2xl px-8"
           type="text"
           name="searchText"
           id="searchText"
@@ -67,38 +69,42 @@ const Searchbar = ({ search }) => {
           onChange={handleText}
           onKeyDown={handleKeyDown}
         />
-        <p className="searchBtn"  onClick={handleForm}>
+        <p className=" bg-cta  rounded-r-2xl w-10 py-3  absolute  px-2  left-2/3 cursor-pointer" onClick={handleForm}>
           🔎
         </p>
-      </div>
+      </div >
 
-      {/* <div className="radios">
-        <div className="radioGroup">
+      <div className="  min-h-32 flex justify-center gap-5 py-3 ">
+        <div className="searchTypeCheckboxes">
           <input
             onChange={handleType}
             type="radio"
             name="searchType"
             defaultChecked="true"
             value="ingredients"
-            id=""
+            id="ingredient"
           />
-          <label htmlFor="searchType"> Search by ingredient </label>
+          <label htmlFor="ingredient"> Search by ingredient
+            <img src={ingredientImage} alt="" />
+          </label>
         </div>
 
-        <div className="radioGroup">
+        <div className="searchTypeCheckboxes">
           <input
             onChange={handleType}
             type="radio"
             name="searchType"
             value="recipe"
-            id=""
+            id="recipe"
           />
-          <label htmlFor="searchType"> Search by recipe</label>
+          <label htmlFor="recipe"> Search by recipe
+            <img src={recipeImage} alt="" />
+          </label>
         </div>
-      </div> */}
+      </div>
 
-      {error && <p className="errorText"> please fill all the fields </p>}
-    </div>
+      {error && <p className="flex justify-center"> please fill all the fields </p>}
+    </div >
   );
 };
 

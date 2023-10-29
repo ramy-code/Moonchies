@@ -29,6 +29,11 @@ const Homepage = () => {
 
   return (
     <div className="App">
+      {recipes.length < 1 &&
+        <div className=" py-10 mt-10 flex justify-center text-5xl">
+          <h1 className="moonchies flex justify-end">Moon<img className="w-10 " src="/cookie-com.svg" alt="" />hies</h1>
+        </div>
+      }
       <Searchbar search={search} />
       {recipes ? <Recipelist recipes={recipes} /> : <p>Nothing found 😿</p>}
     </div>
