@@ -85,7 +85,7 @@ const Searchbar = ({ search }) => {
             id="ingredient"
           />
           <label htmlFor="ingredient"> Search by ingredient
-            <img src={ingredientImage} alt="" />
+            <img className=" w-32" src={ingredientImage} alt="" />
           </label>
         </div>
 
