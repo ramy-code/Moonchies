@@ -1,0 +1,29 @@
+{
+  "name": "moonchies",
+  "version": "0.0.1",
+  "description": "fast recipe finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd ./client && npm start",
+    "server": "nodemon ./server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dablusLyes/Moonchies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dablusLyes/Moonchies/issues"
+  },
+  "homepage": "https://github.com/dablusLyes/Moonchies#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  }
+}
