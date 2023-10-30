@@ -74,7 +74,7 @@ const Searchbar = ({ search }) => {
         </p>
       </div >
 
-      <div className="  min-h-32 flex justify-center gap-5 py-3 ">
+      <div className="  min-h-32 flex justify-center gap-20 py-8 ">
         <div className="searchTypeCheckboxes">
           <input
             onChange={handleType}
