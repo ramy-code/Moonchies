@@ -1,0 +1,26 @@
+
+.moonchies{
+  font-family: 'abril fatFace';
+  letter-spacing: -0.5px;
+}
+.searchTypeCheckboxes  div{
+    height: 20vh;
+}
+
+.bar{
+    width: 1px;
+}
+
+.checked{
+    border-radius: 50px;
+    background: linear-gradient(145deg, #e2d3e6, #fffaff);
+    box-shadow:  20px 20px 60px #d5c7d9,
+                -20px -20px 60px #ffffff;
+}
+.typeContainer{
+    width: 15vw;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}

@@ -13,6 +13,7 @@ const Searchbar = ({ search }) => {
 
   const handleType = (e) => {
     setSearchType(e.target.value);
+    console.log(searchType);
   };
 
 
@@ -24,7 +25,6 @@ const Searchbar = ({ search }) => {
       } else {
         setError(false);
       }
-
       setSearchData({
         searchType: searchType,
         searchText: searchText,
@@ -82,31 +82,33 @@ const Searchbar = ({ search }) => {
         </p>
       </div >
 
-      <div className="searchTypeCheckboxes  min-h-32 flex justify-center gap-20 py-8 ">
-        <div className="">
+      <div className="searchTypeCheckboxes  min-h-32 flex items-center justify-center gap-20 py-8 ">
+        <div className={`typeContainer ${searchType === 'ingredients' ? 'checked' : ''}`}  >
           <input
             onChange={handleType}
+            className="hidden"
             type="radio"
             name="searchType"
             defaultChecked="true"
             value="ingredients"
             id="ingredient"
           />
-          <label htmlFor="ingredient"> Search by ingredient
-            <img className=" w-28" src={ingredientImage} alt="" />
+          <label className="flex flex-col gap-10" htmlFor="ingredient"> Search by ingredient
+            <img className="w-28" src={ingredientImage} alt="" />
           </label>
         </div>
-
-        <div className="">
+        <div className="bar h-24 flex items-center justify-center bg-cta rounded-lg"></div>
+        <div className={`typeContainer ${searchType === 'recipe' ? 'checked' : ''}`}>
           <input
             onChange={handleType}
+            className="hidden"
             type="radio"
             name="searchType"
             value="recipe"
             id="recipe"
           />
-          <label htmlFor="recipe"> Search by recipe
-            <img src={recipeImage} alt="" />
+          <label className="flex flex-col gap-10" htmlFor="recipe"> Search by recipe
+            <img className="w-32" src={recipeImage} alt="" />
           </label>
         </div>
       </div>
