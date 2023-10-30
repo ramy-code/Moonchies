@@ -6,7 +6,7 @@ const Searchbar = ({ search }) => {
   const [searchText, setSearchText] = useState("");
   const [searchType, setSearchType] = useState("ingredients");
   const [error, setError] = useState(false);
-  const [searchData, SetsearchData] = useState({
+  const [searchData, setSearchData] = useState({
     searchType: searchType,
     searchText: searchText,
   });
@@ -25,7 +25,7 @@ const Searchbar = ({ search }) => {
         setError(false);
       }
 
-      SetsearchData({
+      setSearchData({
         searchType: searchType,
         searchText: searchText,
       });
@@ -37,6 +37,13 @@ const Searchbar = ({ search }) => {
     let str = e.target.value;
     setSearchText(str);
   };
+
+  const refreshForm = (e) => {
+    let newArr = []
+    setSearchData(newArr)
+    setSearchText('')
+  }
+
   const handleForm = (e) => {
     if (!searchText || !searchType) {
       setError(true);
@@ -45,7 +52,7 @@ const Searchbar = ({ search }) => {
       setError(false);
     }
 
-    SetsearchData({
+    setSearchData({
       searchType: searchType,
       searchText: searchText,
     });
@@ -55,13 +62,13 @@ const Searchbar = ({ search }) => {
     if (searchText && searchType) {
       search(searchData);
     }
-  }, [searchData.searchText]);
+  }, [searchData]);
   return (
-    <div className="shadow-lg pb-16">
-      <div className="  flex justify-center w-100 ">
+    <div className="shadow-lg py-12 ">
+      <div className="  flex justify-center w-screen ">
         < input
           placeholder={`Search your ${searchType}...`}
-          className="w-1/3 h-12 border-2 border-cta rounded-l-2xl px-8"
+          className="w-10/12 h-12 border-2 border-cta rounded-l-2xl px-8"
           type="text"
           name="searchText"
           id="searchText"
@@ -69,13 +76,14 @@ const Searchbar = ({ search }) => {
           onChange={handleText}
           onKeyDown={handleKeyDown}
         />
-        <p className=" bg-cta  rounded-r-2xl w-10 py-3  absolute  px-2  left-2/3 cursor-pointer" onClick={handleForm}>
+        {searchData.length > 0 ? <span className="flex   text-xl  text-gray items-center bg-cta w-8 justify-center" onClick={refreshForm}>✖</span> : null}
+        <p className=" bg-cta  rounded-r-2xl w-10 py-3    px-2 cursor-pointer" onClick={handleForm}>
           🔎
         </p>
       </div >
 
-      <div className="  min-h-32 flex justify-center gap-20 py-8 ">
-        <div className="searchTypeCheckboxes">
+      <div className="searchTypeCheckboxes  min-h-32 flex justify-center gap-20 py-8 ">
+        <div className="">
           <input
             onChange={handleType}
             type="radio"
@@ -85,11 +93,11 @@ const Searchbar = ({ search }) => {
             id="ingredient"
           />
           <label htmlFor="ingredient"> Search by ingredient
-            <img className=" w-32" src={ingredientImage} alt="" />
+            <img className=" w-28" src={ingredientImage} alt="" />
           </label>
         </div>
 
-        <div className="searchTypeCheckboxes">
+        <div className="">
           <input
             onChange={handleType}
             type="radio"

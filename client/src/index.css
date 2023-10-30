@@ -18,7 +18,9 @@ html{
   font-family: 'abril fatFace';
   letter-spacing: -0.5px;
 }
-.searchTypeCheckboxes >img{
-  max-width: 140px;
-
+.searchTypeCheckboxes  div input{
+  background-color: red;
+}
+.searchTypeCheckboxes > input[type="radio"]:checked{
+  background-color: red;
 }
