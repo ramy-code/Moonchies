@@ -4,23 +4,42 @@
   letter-spacing: -0.5px;
 }
 .searchTypeCheckboxes  div{
-    height: 20vh;
+    min-height: 150px;
 }
 
 .bar{
-    width: 1px;
+    margin-top: 25px;
+    width: .5px
+}
+
+
+
+.typeContainer{
+    display: flex;
+    width: 150px;
+    border-radius: 15px;
+    padding: 5px 25px;
+    justify-content: center;
+    padding: 5px;
+    transition: all .5s;
+
+}
+
+.typeContainer:not(.checked):hover{
+    border-radius: 15px;
+    background: #FBEAFF;
+    box-shadow:  9px 9px 13px #e7d7eb,
+             -9px -9px 13px #fffdff;
 }
 
 .checked{
-    border-radius: 50px;
-    background: linear-gradient(145deg, #e2d3e6, #fffaff);
-    box-shadow:  20px 20px 60px #d5c7d9,
-                -20px -20px 60px #ffffff;
-}
-.typeContainer{
-    width: 15vw;
     border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+    background: #FBEAFF;
+    box-shadow: inset 5px 5px 8px #d5c7d9,
+                inset -5px -5px 8px #ffffff;
+}
+
+
+.recipeCard img{
+    border-radius: 15px;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import recipeImage from '../assets/breakfast-monochromatic.svg'
 import ingredientImage from '../assets/shopping-cart-monochromatic.svg'
-const Searchbar = ({ search }) => {
+const Searchbar = ({ search, isContentOnPage }) => {
   const [searchText, setSearchText] = useState("");
   const [searchType, setSearchType] = useState("ingredients");
   const [error, setError] = useState(false);
@@ -64,11 +64,11 @@ const Searchbar = ({ search }) => {
     }
   }, [searchData]);
   return (
-    <div className="shadow-lg py-12 ">
+    <div className=" py-12 ">
       <div className="  flex justify-center w-screen ">
         < input
           placeholder={`Search your ${searchType}...`}
-          className="w-10/12 h-12 border-2 border-cta rounded-l-2xl px-8"
+          className="w-1/2 h-12 border-2 border-cta rounded-l-2xl px-8"
           type="text"
           name="searchText"
           id="searchText"
@@ -82,7 +82,7 @@ const Searchbar = ({ search }) => {
         </p>
       </div >
 
-      <div className="searchTypeCheckboxes  min-h-32 flex items-center justify-center gap-20 py-8 ">
+      <div className="searchTypeCheckboxes   min-h-32 flex justify-center gap-20 py-8 ">
         <div className={`typeContainer ${searchType === 'ingredients' ? 'checked' : ''}`}  >
           <input
             onChange={handleType}
@@ -93,12 +93,12 @@ const Searchbar = ({ search }) => {
             value="ingredients"
             id="ingredient"
           />
-          <label className="flex flex-col gap-10" htmlFor="ingredient"> Search by ingredient
+          <label className="flex flex-col gap-5 p-2" htmlFor="ingredient"> Search <br /> by ingredient
             <img className="w-28" src={ingredientImage} alt="" />
           </label>
         </div>
-        <div className="bar h-24 flex items-center justify-center bg-cta rounded-lg"></div>
-        <div className={`typeContainer ${searchType === 'recipe' ? 'checked' : ''}`}>
+        <div className="bar  h-24 flex items-center justify-center bg-cta rounded-lg"></div>
+        <div className={` typeContainer ${searchType === 'recipe' ? 'checked' : ''}`}>
           <input
             onChange={handleType}
             className="hidden"
@@ -107,7 +107,7 @@ const Searchbar = ({ search }) => {
             value="recipe"
             id="recipe"
           />
-          <label className="flex flex-col gap-10" htmlFor="recipe"> Search by recipe
+          <label className="flex flex-col gap-5 p-2" htmlFor="recipe"> Search <br />by recipe
             <img className="w-32" src={recipeImage} alt="" />
           </label>
         </div>

@@ -7,6 +7,7 @@ import axios from "axios";
 const Homepage = () => {
   const [ingridients, setIngridients] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [isContentOnPage, setIsContentOnPage] = useState(false)
 
   const search = (obj) => {
     setIngridients(obj);
@@ -27,14 +28,22 @@ const Homepage = () => {
     }
   }, [ingridients]);
 
+
+  useEffect(() => {
+    console.log(isContentOnPage)
+    if (recipes.length === 0) setIsContentOnPage(false)
+    else setIsContentOnPage(true)
+  }, [recipes])
+
+
   return (
     <div className="App">
-      {recipes.length < 1 &&
+      {!isContentOnPage &&
         <div className=" py-10 mt-10 flex justify-center text-5xl">
           <h1 className="moonchies flex justify-end">Moon<img className="w-10 " src="/cookie-com.svg" alt="" />hies</h1>
         </div>
       }
-      <Searchbar search={search} />
+      <Searchbar search={search} isContentOnPage={isContentOnPage} />
       {recipes ? <Recipelist recipes={recipes} /> : <p>Nothing found 😿</p>}
     </div>
   );
