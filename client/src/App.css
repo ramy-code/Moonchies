@@ -43,3 +43,28 @@
 .recipeCard img{
     border-radius: 15px;
 }
+
+.filter-container{
+    background: #FBEAFF;
+    box-shadow: inset 5px 5px 8px #d5c7d9,
+                inset -5px -5px 8px #ffffff;
+}
+
+.filter-container label{
+    margin: 0 10px;
+}
+
+.soft-inner{
+    border-radius: 15px;
+    background: #FBEAFF;
+    box-shadow: inset 5px 5px 8px #d5c7d9,
+                inset -5px -5px 8px #ffffff;
+}
+
+
+.soft-outer{
+    border-radius: 15px;
+    background: #FBEAFF;
+    box-shadow:  9px 9px 13px #e7d7eb,
+             -9px -9px 13px #fffdff;
+}

@@ -8,6 +8,8 @@ module.exports = {
 			secondary: "#64BAAA",
 			bgColor: "#FBEAFF",
 			cta: "#64BAAA",
+			text: "#00000",
+			textLight: "#3e3e3e",
 		},
 	},
 	plugins: [],
