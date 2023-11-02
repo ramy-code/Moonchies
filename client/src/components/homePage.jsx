@@ -9,16 +9,22 @@ const Homepage = () => {
   const [recipes, setRecipes] = useState([]);
   const [isContentOnPage, setIsContentOnPage] = useState(false)
   const [sortMethod, setSortMethod] = useState('')
+  const SORT_ACTIONS = {
+    ALPHABETICAL: 'alphabetical',
+    LIKES: 'likes',
+    MISSING_INGREDIENTS: 'ingredientsMissing'
+  }
+
 
   const sortRecipes = (sortMethod) => {
     switch (sortMethod) {
-      case 'Alphabetical':
+      case SORT_ACTIONS.ALPHABETICAL:
         recipes.sort((recipe1, recipe2) => recipe1.title > recipe2.title ? 1 : -1)
         break;
-      case 'Likes':
+      case SORT_ACTIONS.LIKES:
         recipes.sort((recipe1, recipe2) => recipe1.likes > recipe2.likes ? 1 : -1)
         break;
-      case 'IngredientsMissing':
+      case SORT_ACTIONS.MISSING_INGREDIENTS:
         recipes.sort((recipe1, recipe2) => recipe1.missedIngredients.length < recipe2.missedIngredients.length ? 1 : -1)
         break;
       default:
@@ -64,15 +70,24 @@ const Homepage = () => {
 
 
       <p className='p-2 text-textLight'>Filter :</p>
-      <div className="filter-container bg-cta inline p-2  mx-4 rounded-xl">
-        <input onChange={setSortMethod('Alphabetical')} htmlFor="Alphabetical" type="radio" className='hidden' />
-        <label htmlFor="Alphabetical"> 🔤 </label>
+      <div className="filter-container bg-cta inline p-2  mx-4 rounded-xl flex items-center">
+        <div>
 
-        <input htmlFor="Likes" type="radio" className='hidden' />
-        <label htmlFor="Likes">💓</label>
+          <div>
+            <input onChange={() => { setSortMethod('Alphabetical') }} value={SORT_ACTIONS.ALPHABETICAL} id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
+            <label htmlFor={SORT_ACTIONS.ALPHABETICAL}> 🔤 </label>
+          </div>
 
-        <input htmlFor="IngredientsMissing" type="radio" className='hidden' />
-        <label htmlFor="IngredientsMissing"> 🥨 </label>
+          <div>
+            <input id={SORT_ACTIONS.LIKES} value={SORT_ACTIONS.LIKES} type="radio" className='' />
+            <label htmlFor={SORT_ACTIONS.LIKES}>💓</label>
+          </div>
+
+          <div>
+            <input id={SORT_ACTIONS.MISSING_INGREDIENTS} value={SORT_ACTIONS.MISSING_INGREDIENTS} type="radio" className='' />
+            <label htmlFor={SORT_ACTIONS.MISSING_INGREDIENTS}> 🥨 </label>
+          </div>
+        </div>
       </div>
 
       {recipes ? <Recipelist recipes={recipes} /> : <p>Nothing found 😿</p>}
