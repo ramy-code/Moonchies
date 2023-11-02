@@ -74,7 +74,7 @@ const Homepage = () => {
         <div>
 
           <div>
-            <input onChange={() => { setSortMethod('Alphabetical') }} value={SORT_ACTIONS.ALPHABETICAL} id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
+            <input onChange={() => { setSortMethod(SORT_ACTIONS.ALPHABETICAL) }} value={SORT_ACTIONS.ALPHABETICAL} id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
             <label htmlFor={SORT_ACTIONS.ALPHABETICAL}> 🔤 </label>
           </div>
 
