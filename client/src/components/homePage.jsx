@@ -8,7 +8,7 @@ const Homepage = () => {
   const [ingridients, setIngridients] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [isContentOnPage, setIsContentOnPage] = useState(false)
-  const [sortMethod, setSortMethod] = useState('')
+  const [sortMethod, setSortMethod] = useState("")
   const SORT_ACTIONS = {
     ALPHABETICAL: 'alphabetical',
     LIKES: 'likes',
@@ -19,15 +19,16 @@ const Homepage = () => {
   const sortRecipes = (sortMethod) => {
     switch (sortMethod) {
       case SORT_ACTIONS.ALPHABETICAL:
-        recipes.sort((recipe1, recipe2) => recipe1.title > recipe2.title ? 1 : -1)
+        setRecipes(recipes.sort((recipe1, recipe2) => recipe1.title < recipe2.title ? 1 : -1))
         break;
       case SORT_ACTIONS.LIKES:
-        recipes.sort((recipe1, recipe2) => recipe1.likes > recipe2.likes ? 1 : -1)
+        setRecipes(recipes.sort((recipe1, recipe2) => recipe1.likes > recipe2.likes ? 1 : -1))
         break;
       case SORT_ACTIONS.MISSING_INGREDIENTS:
-        recipes.sort((recipe1, recipe2) => recipe1.missedIngredients.length < recipe2.missedIngredients.length ? 1 : -1)
+        setRecipes(recipes.sort((recipe1, recipe2) => recipe1.missedIngredientCount < recipe2.missedIngredientCount ? 1 : -1))
         break;
       default:
+        setRecipes(recipes.sort((recipe1, recipe2) => recipe1.title < recipe2.title ? 1 : -1))
         break;
     }
   }
@@ -57,6 +58,11 @@ const Homepage = () => {
     else setIsContentOnPage(true)
   }, [recipes])
 
+  useEffect(() => {
+    sortRecipes(sortMethod)
+    console.log(recipes);
+  }, [sortMethod])
+
 
   return (
     <div className="App">
@@ -69,29 +75,27 @@ const Homepage = () => {
       <Searchbar search={search} isContentOnPage={isContentOnPage} />
 
 
-      <p className='p-2 text-textLight'>Filter :</p>
-      <div className="filter-container bg-cta inline p-2  mx-4 rounded-xl flex items-center">
-        <div>
-
+      <div className={`${recipes.length == 0 ? `hidden` : `flex`}`}>
+        <p className='p-2 text-textLight'>Filter :</p>
+        <div className="filter-container bg-cta inline p-2  mx-4 rounded-xl flex items-center">
           <div>
-            <input onChange={() => { setSortMethod(SORT_ACTIONS.ALPHABETICAL) }} value={SORT_ACTIONS.ALPHABETICAL} id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
+            <input onChange={() => { setSortMethod(SORT_ACTIONS.ALPHABETICAL) }} defaultChecked="true" value={SORT_ACTIONS.ALPHABETICAL} name="sortType" id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
             <label htmlFor={SORT_ACTIONS.ALPHABETICAL}> 🔤 </label>
           </div>
-
           <div>
-            <input id={SORT_ACTIONS.LIKES} value={SORT_ACTIONS.LIKES} type="radio" className='' />
+            <input id={SORT_ACTIONS.LIKES} onChange={() => { setSortMethod(SORT_ACTIONS.LIKES) }} value={SORT_ACTIONS.LIKES} name="sortType" type="radio" className='' />
             <label htmlFor={SORT_ACTIONS.LIKES}>💓</label>
           </div>
-
           <div>
-            <input id={SORT_ACTIONS.MISSING_INGREDIENTS} value={SORT_ACTIONS.MISSING_INGREDIENTS} type="radio" className='' />
-            <label htmlFor={SORT_ACTIONS.MISSING_INGREDIENTS}> 🥨 </label>
+            <input id={SORT_ACTIONS.MISSING_INGREDIENTS} onChange={() => { setSortMethod(SORT_ACTIONS.MISSING_INGREDIENTS) }} value={SORT_ACTIONS.MISSING_INGREDIENTS} name="sortType" type="radio" className='' />
+            <label htmlFor={SORT_ACTIONS.MISSING_INGREDIENTS}>🥕</label>
+
           </div>
         </div>
       </div>
 
       {recipes ? <Recipelist recipes={recipes} /> : <p>Nothing found 😿</p>}
-    </div>
+    </div >
   );
 };
 
