@@ -94,7 +94,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      {recipes.length === 0 ? <Recipelist recipes={recipes} /> : <p className=" pt-11 text-center">Nothing found 😿</p>}
+      {recipes.length === 0 && ingridients.searchText ? <p className=" pt-11 text-center">Nothing found 😿</p> : <Recipelist recipes={recipes} />}
     </div >
   );
 };
