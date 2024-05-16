@@ -82,7 +82,7 @@ const Searchbar = ({ search, isContentOnPage }) => {
         </p>
       </div >
 
-      <div className="searchTypeCheckboxes   min-h-32 flex justify-center gap-20 py-8 ">
+      {/* <div className="searchTypeCheckboxes   min-h-32 flex justify-center gap-20 py-8 ">
         <div className={`typeContainer ${searchType === 'ingredients' ? 'checked' : ''}`}  >
           <input
             onChange={handleType}
@@ -111,9 +111,9 @@ const Searchbar = ({ search, isContentOnPage }) => {
             <img className="w-32" src={recipeImage} alt="" />
           </label>
         </div>
-      </div>
+      </div> */}
 
-      {error && <p className="flex justify-center"> please fill all the fields </p>}
+      {error && <p className="flex justify-center "> please fill all the fields </p>}
     </div >
   );
 };

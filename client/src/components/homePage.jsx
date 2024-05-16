@@ -1,7 +1,7 @@
 import React from "react";
 import Recipelist from "./recipeList";
 import Searchbar from "./searchBar";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Homepage = () => {
@@ -75,7 +75,7 @@ const Homepage = () => {
       <Searchbar search={search} isContentOnPage={isContentOnPage} />
 
 
-      <div className={`${recipes.length === 0 ? `hidden` : `flex`}`}>
+      {/* <div className={`${recipes.length === 0 ? `hidden` : `flex`}`}>
         <p className='p-2 text-textLight'>Filter :</p>
         <div className="filter-container bg-cta p-2  mx-4 rounded-xl flex items-center">
           <div>
@@ -92,7 +92,7 @@ const Homepage = () => {
 
           </div>
         </div>
-      </div>
+      </div> */}
 
       {recipes.length === 0 && ingridients.searchText ? <p className=" pt-11 text-center">Nothing found 😿</p> : <Recipelist recipes={recipes} />}
     </div >
