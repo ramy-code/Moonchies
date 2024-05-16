@@ -75,9 +75,9 @@ const Homepage = () => {
       <Searchbar search={search} isContentOnPage={isContentOnPage} />
 
 
-      <div className={`${recipes.length == 0 ? `hidden` : `flex`}`}>
+      <div className={`${recipes.length === 0 ? `hidden` : `flex`}`}>
         <p className='p-2 text-textLight'>Filter :</p>
-        <div className="filter-container bg-cta inline p-2  mx-4 rounded-xl flex items-center">
+        <div className="filter-container bg-cta p-2  mx-4 rounded-xl flex items-center">
           <div>
             <input onChange={() => { setSortMethod(SORT_ACTIONS.ALPHABETICAL) }} defaultChecked="true" value={SORT_ACTIONS.ALPHABETICAL} name="sortType" id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
             <label htmlFor={SORT_ACTIONS.ALPHABETICAL}> 🔤 </label>
@@ -94,7 +94,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      {recipes ? <Recipelist recipes={recipes} /> : <p>Nothing found 😿</p>}
+      {recipes.length === 0 ? <Recipelist recipes={recipes} /> : <p className=" pt-11 text-center">Nothing found 😿</p>}
     </div >
   );
 };
