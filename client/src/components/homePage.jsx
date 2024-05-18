@@ -75,25 +75,6 @@ const Homepage = () => {
       <Searchbar search={search} isContentOnPage={isContentOnPage} />
 
 
-      {/* <div className={`${recipes.length === 0 ? `hidden` : `flex`}`}>
-        <p className='p-2 text-textLight'>Filter :</p>
-        <div className="filter-container bg-cta p-2  mx-4 rounded-xl flex items-center">
-          <div>
-            <input onChange={() => { setSortMethod(SORT_ACTIONS.ALPHABETICAL) }} defaultChecked="true" value={SORT_ACTIONS.ALPHABETICAL} name="sortType" id={SORT_ACTIONS.ALPHABETICAL} type="radio" className='' />
-            <label htmlFor={SORT_ACTIONS.ALPHABETICAL}> 🔤 </label>
-          </div>
-          <div>
-            <input id={SORT_ACTIONS.LIKES} onChange={() => { setSortMethod(SORT_ACTIONS.LIKES) }} value={SORT_ACTIONS.LIKES} name="sortType" type="radio" className='' />
-            <label htmlFor={SORT_ACTIONS.LIKES}>💓</label>
-          </div>
-          <div>
-            <input id={SORT_ACTIONS.MISSING_INGREDIENTS} onChange={() => { setSortMethod(SORT_ACTIONS.MISSING_INGREDIENTS) }} value={SORT_ACTIONS.MISSING_INGREDIENTS} name="sortType" type="radio" className='' />
-            <label htmlFor={SORT_ACTIONS.MISSING_INGREDIENTS}>🥕</label>
-
-          </div>
-        </div>
-      </div> */}
-
       {recipes.length === 0 && ingridients.searchText ? <p className=" pt-11 text-center">Nothing found 😿</p> : <Recipelist recipes={recipes} />}
     </div >
   );

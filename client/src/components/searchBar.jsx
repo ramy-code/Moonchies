@@ -82,37 +82,6 @@ const Searchbar = ({ search, isContentOnPage }) => {
         </p>
       </div >
 
-      {/* <div className="searchTypeCheckboxes   min-h-32 flex justify-center gap-20 py-8 ">
-        <div className={`typeContainer ${searchType === 'ingredients' ? 'checked' : ''}`}  >
-          <input
-            onChange={handleType}
-            className="hidden"
-            type="radio"
-            name="searchType"
-            defaultChecked="true"
-            value="ingredients"
-            id="ingredient"
-          />
-          <label className="flex flex-col gap-5 p-2" htmlFor="ingredient"> Search <br /> by ingredient
-            <img className="w-28" src={ingredientImage} alt="" />
-          </label>
-        </div>
-        <div className="bar  h-24 flex items-center justify-center bg-cta rounded-lg"></div>
-        <div className={` typeContainer ${searchType === 'recipe' ? 'checked' : ''}`}>
-          <input
-            onChange={handleType}
-            className="hidden"
-            type="radio"
-            name="searchType"
-            value="recipe"
-            id="recipe"
-          />
-          <label className="flex flex-col gap-5 p-2" htmlFor="recipe"> Search <br />by recipe
-            <img className="w-32" src={recipeImage} alt="" />
-          </label>
-        </div>
-      </div> */}
-
       {error && <p className="flex justify-center "> please fill all the fields </p>}
     </div >
   );

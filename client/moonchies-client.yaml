@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: ramy98/moonchies-client
+        imagePullPolicy: Always # Change to Never if using local Docker image
+        ports:
+        - containerPort: 3000 #  Need to be same as target port in service
+        env:
+        - name: REACT_APP_BASE_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: client
+  ports:
+    - protocol: TCP
+      port: 3000  # Service running port (minikube tunnel will proxy this port)
+      targetPort: 3000 # Need to be same as container port in deployment
